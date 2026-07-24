@@ -13,9 +13,9 @@ export default function Home() {
   const { theme } = useTheme();
 
   const stats = [
-    { value: "16+", label: t("stats.tech") },
-    { value: "4+", label: t("stats.exp") },
-    { value: "20+", label: t("stats.proj") },
+    { value: "1+", label: t("stats.exp") },
+    { value: "5+", label: t("stats.proj") },
+    { value: "10+", label: t("stats.tech") },
     { value: "100%", label: t("stats.passion") },
   ];
 

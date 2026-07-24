@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ExternalLink, Layers, Cpu, Globe, Smartphone, X, CheckCircle2, ChevronRight, Image as ImageIcon } from "lucide-react";
+import { ExternalLink, Layers, Cpu, Globe, Smartphone, X, CheckCircle2, ChevronRight, Image as ImageIcon, Maximize2, ChevronLeft, Shield } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import ElectricBorder from "@/components/ElectricBorder";
@@ -19,13 +19,24 @@ interface ProjectItem {
   githubUrl: string;
   liveUrl: string;
   features: string[];
-  screenshots: { title: string; desc: string; gradient: string }[];
+  screenshots: { title: string; desc: string; gradient: string; image?: string }[];
 }
 
 export default function Projects() {
   const { t, lang } = useLang();
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
+  const [isFullscreenPreview, setIsFullscreenPreview] = useState(false);
+
+  const handlePrevImage = () => {
+    if (!selectedProject) return;
+    setActiveImageIdx((prev) => (prev === 0 ? selectedProject.screenshots.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    if (!selectedProject) return;
+    setActiveImageIdx((prev) => (prev === selectedProject.screenshots.length - 1 ? 0 : prev + 1));
+  };
 
   const projects: ProjectItem[] = [
     {
@@ -42,8 +53,8 @@ export default function Projects() {
       gradient: "from-[#845EC2] to-[#0081CF]",
       icon: Globe,
       year: "2026",
-      githubUrl: "https://github.com/hillmydyan/sijuko-kopma-unila",
-      liveUrl: "https://sijuko.kopma-unila.ac.id",
+      githubUrl: "https://github.com/hillmydyan/wesite-sijuko-kopma-unila",
+      liveUrl: "https://sijuko.kopmaunilaofficial.com",
       features: lang === "id" ? [
         "Web User Storefront untuk katalog produk & transaksi koperasi online",
         "Modul fitur aplikasi mobile SIJUKO responsif",
@@ -56,46 +67,124 @@ export default function Projects() {
         "Cross-Platform Security Build & vulnerability protection"
       ],
       screenshots: [
-        { title: "Web User Homepage", desc: "Halaman katalog produk & checkout belanja SIJUKO", gradient: "from-[#845EC2] to-[#2C73D2]" },
-        { title: "Mobile App Interface", desc: "Tampilan aplikasi mobile SIJUKO dengan fitur baru", gradient: "from-[#0081CF] to-[#0089BA]" },
-        { title: "Backend Admin Panel", desc: "Panel pengelolaan inventaris & laporan transaksi KOPMA", gradient: "from-[#0089BA] to-[#008F7A]" }
+        {
+          title: lang === "id" ? "Dashboard Utama SIJUKO" : "Main Dashboard View",
+          desc: lang === "id" ? "Tampilan saldo simpanan, poin anggota, berita KOPMA & jadwal" : "Member savings balance, points, news & schedules",
+          gradient: "from-[#845EC2] to-[#2C73D2]",
+          image: "/assets/sijuko/dashboard.png"
+        },
+        {
+          title: lang === "id" ? "Halaman Autentikasi Login" : "Login Portal View",
+          desc: lang === "id" ? "Halaman login anggota dengan proteksi keamanan terenkripsi" : "Member login page with encrypted security authentication",
+          gradient: "from-[#0081CF] to-[#0089BA]",
+          image: "/assets/sijuko/login.png"
+        },
+        {
+          title: lang === "id" ? "Modul Kegiatan & Presensi" : "Events & Attendance Scanner",
+          desc: lang === "id" ? "Pemindai QR presensi kehadiran & daftar piket sekretariat" : "Attendance QR code scanner & secretariat duty schedules",
+          gradient: "from-[#0089BA] to-[#008F7A]",
+          image: "/assets/sijuko/kegiatan.png"
+        }
       ]
     },
     {
       id: 2,
-      title: "CSIRT Kominfo Incident & Security System",
-      category: lang === "id" ? "Cyber Security & Incident Management" : "Cyber Security & Incident Management",
+      title: "Kominfo Captive Portal & Hotspot Security",
+      category: lang === "id" ? "Network Infrastructure & Captive Portal" : "Network Infrastructure & Captive Portal",
       shortDesc: lang === "id"
-        ? "Sistem ticketing CSIRT dan platform investigasi celah keamanan serangan injection & defacement."
-        : "Government CSIRT ticketing system and cyber threat mitigation platform for web defacement attacks.",
+        ? "Sistem Captive Portal Hotspot Kominfo Lampung Selatan dengan halaman autentikasi user dan monitoring kuota real-time."
+        : "Kominfo Lampung Selatan Hotspot Captive Portal system with custom user authentication and real-time bandwidth monitoring.",
       fullDesc: lang === "id"
-        ? "Sistem penanganan insiden keamanan jaringan Kominfo Lam-Sel. Mengembangkan portal ticketing CSIRT, menganalisis website terinfeksi serangan injection & defacement judi online, serta menginvestigasi celah keamanan backend."
-        : "Cyber incident management system for Kominfo Lam-Sel. Built the CSIRT ticketing portal, analyzed websites targeted by SQL injection & defacement attacks, and deployed backend vulnerability patches.",
-      tools: ["PHP/Laravel", "MySQL", "Security Audit", "REST API", "TailwindCSS"],
+        ? "Sistem Captive Portal dan Manajemen Hotspot Jaringan Dinas Kominfo Lampung Selatan. Dirancang untuk mengamankan akses jaringan publik & internal, mengintegrasikan halaman autentikasi responsif, serta menampilkan dashboard status koneksi, IP, MAC address, dan pemakaian kuota internet secara real-time."
+        : "Hotspot Captive Portal and Network Access Control system for Diskominfo Lampung Selatan. Engineered for secure public & internal network authentication, featuring a responsive login interface and real-time user bandwidth/session monitoring.",
+      tools: ["HTML5/CSS3", "JavaScript", "MikroTik RouterOS", "Network Security", "TailwindCSS"],
       gradient: "from-[#0081CF] to-[#0089BA]",
       icon: Cpu,
       year: "2024",
-      githubUrl: "https://github.com/hillmydyan/csirt-kominfo-system",
+      githubUrl: "https://github.com/hillmydyan/KP-KOMINFO-LOGIN-PAGE",
       liveUrl: "https://csirt.lampungselatankab.go.id",
       features: lang === "id" ? [
-        "Sistem Ticketing CSIRT untuk pelaporan insiden keamanan cyber",
-        "Dashboard analisis serangan injection & defacement judi online",
-        "Investigasi celah keamanan backend & rekomendasi patching",
-        "Sistem log audit keamanan real-time"
+        "Sistem Autentikasi Portal Login Hotspot Kominfo Lampung Selatan",
+        "Monitoring real-time status sesi, durasi terhubung & sisa kuota",
+        "Integrasi halaman status jaringan captive portal MikroTik",
+        "Keamanan akses jaringan lokal & proteksi autentikasi user"
       ] : [
-        "CSIRT Incident Ticketing system for security reporting",
-        "Cyber attack analysis dashboard for SQL injection & defacement",
-        "Backend vulnerability investigation & patching framework",
-        "Real-time security audit logging"
+        "Authentication system for Kominfo Lampung Selatan Hotspot Login Portal",
+        "Real-time monitoring for user session status, uptime & quota left",
+        "MikroTik captive portal status page integration",
+        "Local network access control & secure user authentication"
       ],
       screenshots: [
-        { title: "CSIRT Ticketing Dashboard", desc: "Dashboard pelaporan & penanganan insiden cyber", gradient: "from-[#0081CF] to-[#0089BA]" },
-        { title: "Defacement Analysis View", desc: "Panel investigasi serangan injection & defacement", gradient: "from-[#0089BA] to-[#008F7A]" },
-        { title: "Security Log Audit", desc: "Sistem pengawasan celah keamanan backend server", gradient: "from-[#845EC2] to-[#0081CF]" }
+        {
+          title: lang === "id" ? "Portal Login Hotspot Kominfo" : "Kominfo Hotspot Login Portal",
+          desc: lang === "id" ? "Halaman masuk portal wifi & jaringan Kominfo Lampung Selatan" : "Wifi hotspot login portal for Kominfo Lampung Selatan",
+          gradient: "from-[#0081CF] to-[#0089BA]",
+          image: "/assets/kominfo/login_landing.png"
+        },
+        {
+          title: lang === "id" ? "Tabel Status Kuota & Sesi" : "Session & Bandwidth Status Table",
+          desc: lang === "id" ? "Monitoring IP address, MAC, sisa kuota, dan durasi terhubung" : "Monitoring IP, MAC address, remaining bytes, and session uptime",
+          gradient: "from-[#0089BA] to-[#008F7A]",
+          image: "/assets/kominfo/status_table.png"
+        }
       ]
     },
     {
       id: 3,
+      title: "Web-Based Penetration Testing Lab (Tugas Akhir)",
+      category: lang === "id" ? "Cyber Security & Cloud Infrastructure" : "Cyber Security & Cloud Infrastructure",
+      shortDesc: lang === "id"
+        ? "Platform laboratorium penetrasi testing berbasis website interaktif untuk simulasi dan edukasi keamanan jaringan."
+        : "Interactive web-based penetration testing laboratory platform for network security simulations and cybersecurity education.",
+      fullDesc: lang === "id"
+        ? "Platform Laboratorium Penetrasi Testing Berbasis Web (Tugas Akhir). Dirancang untuk simulasi dan edukasi keamanan jaringan interaktif menggunakan arsitektur container Docker, backend Python Flask, manajemen VirtualBox VM, integrasi remote desktop Apache Guacamole, dan web server Apache."
+        : "Web-Based Penetration Testing Laboratory Platform (Final Project). Engineered for interactive network security training using Docker container architecture, Python Flask backend, VirtualBox VM orchestration, Apache Guacamole remote access gateway, and Apache web server.",
+      tools: ["Python", "Flask", "Docker", "Apache Guacamole", "VirtualBox", "Apache", "Cyber Security"],
+      gradient: "from-[#845EC2] to-[#0089BA]",
+      icon: Shield,
+      year: "2026",
+      githubUrl: "https://github.com/hillmydyan/TA-Peneterasi-Lab",
+      liveUrl: "https://github.com/hillmydyan/TA-Peneterasi-Lab",
+      features: lang === "id" ? [
+        "Akses remote lab penetrasi testing langsung via browser dengan Apache Guacamole",
+        "Orkestrasi lingkungan virtual & container otomatis dengan Docker & VirtualBox",
+        "Backend manajemen sesi lab interaktif berbasis Python Flask",
+        "Modul simulasi pengujian celah keamanan jaringan (DDoS, Sniffing, DNS Spoofing)"
+      ] : [
+        "Direct browser-based remote penetration lab access via Apache Guacamole gateway",
+        "Automated virtual environment orchestration powered by Docker & VirtualBox",
+        "Python Flask backend for interactive lab session management",
+        "Isolated network vulnerability testing & attack simulation modules (DDoS, Sniffing, DNS Spoofing)"
+      ],
+      screenshots: [
+        {
+          title: lang === "id" ? "Menu Skenario Penetrasi Network" : "Network Pentest Scenario Menu",
+          desc: lang === "id" ? "Pilihan skenario simulasi serangan (DDoS Attack, Sniffing, DNS Spoofing)" : "Interactive attack scenario selection (DDoS, Sniffing, DNS Spoofing)",
+          gradient: "from-[#845EC2] to-[#0081CF]",
+          image: "/assets/TA/scenarios.png"
+        },
+        {
+          title: lang === "id" ? "Sesi Remote Desktop Apache Guacamole" : "Apache Guacamole Remote VM Session",
+          desc: lang === "id" ? "Tampilan sesi remote Attacker Kali Linux & Target Victim VM via browser" : "Live browser-based desktop view for Attacker Kali Linux & Target Victim VM",
+          gradient: "from-[#0081CF] to-[#0089BA]",
+          image: "/assets/TA/practice_vm.png"
+        },
+        {
+          title: lang === "id" ? "Modul Instruksi & Panduan Serangan" : "Pentest Attack Simulation Guide",
+          desc: lang === "id" ? "Langkah-langkah eksekusi tools (slowhttptest), identifikasi target & analisa" : "Step-by-step execution instructions (slowhttptest), target ID & attack analysis",
+          gradient: "from-[#0089BA] to-[#008F7A]",
+          image: "/assets/TA/guide.png"
+        },
+        {
+          title: lang === "id" ? "Portal Sign In Akses Lab Virtual" : "CyberLab Virtual Access Portal",
+          desc: lang === "id" ? "Halaman autentikasi login pengguna untuk mengakses platform lab virtual" : "User authentication sign-in portal for accessing the virtual lab",
+          gradient: "from-[#845EC2] to-[#2C73D2]",
+          image: "/assets/TA/login.png"
+        }
+      ]
+    },
+    {
+      id: 4,
       title: "Ultra-Refractive Glass Portfolio",
       category: lang === "id" ? "Creative Web Engineering" : "Creative Web Engineering",
       shortDesc: lang === "id"
@@ -128,7 +217,7 @@ export default function Projects() {
       ]
     },
     {
-      id: 4,
+      id: 5,
       title: "Smart Analytics & Commerce Engine",
       category: lang === "id" ? "Full-Stack Enterprise Web" : "Full-Stack Enterprise Web",
       shortDesc: lang === "id"
@@ -315,9 +404,33 @@ export default function Projects() {
               </div>
 
               {/* SCREENSHOT MAIN VIEW */}
-              <div className={`w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br ${selectedProject.screenshots[activeImageIdx].gradient} p-6 flex flex-col justify-end relative overflow-hidden shadow-inner border border-white/20 mb-4 transition-all duration-300`}>
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="relative z-10 bg-slate-950/75 backdrop-blur-md p-4 rounded-xl border border-white/20 max-w-md">
+              <div
+                onClick={() => {
+                  if (selectedProject.screenshots[activeImageIdx].image) {
+                    setIsFullscreenPreview(true);
+                  }
+                }}
+                className={`w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br ${selectedProject.screenshots[activeImageIdx].gradient} p-6 flex flex-col justify-end relative overflow-hidden shadow-inner border border-white/20 mb-4 transition-all duration-300 ${
+                  selectedProject.screenshots[activeImageIdx].image ? "cursor-pointer group/img" : ""
+                }`}
+              >
+                {selectedProject.screenshots[activeImageIdx].image && (
+                  <>
+                    <img
+                      src={selectedProject.screenshots[activeImageIdx].image}
+                      alt={selectedProject.screenshots[activeImageIdx].title}
+                      className="absolute inset-0 w-full h-full object-cover object-top z-0 transition-transform duration-500 group-hover/img:scale-105"
+                    />
+                    <div className="absolute top-4 right-4 z-10 opacity-90 group-hover/img:opacity-100 transition-opacity">
+                      <span className="px-3 py-1.5 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1.5 border border-white/20 shadow-lg group-hover/img:bg-[#845EC2] transition-colors">
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>{lang === "id" ? "Klik untuk Pratinjau" : "Click to Preview"}</span>
+                      </span>
+                    </div>
+                  </>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent z-[1]" />
+                <div className="relative z-10 bg-slate-950/80 backdrop-blur-md p-4 rounded-xl border border-white/20 max-w-md shadow-lg">
                   <h5 className="font-bold text-white text-base mb-1">
                     {selectedProject.screenshots[activeImageIdx].title}
                   </h5>
@@ -392,6 +505,87 @@ export default function Projects() {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* FULLSCREEN IMAGE LIGHTBOX MODAL */}
+      {isFullscreenPreview && selectedProject && selectedProject.screenshots[activeImageIdx].image && (
+        <div 
+          className="fixed inset-0 z-[300] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-4 animate-fadeIn select-none"
+          onClick={() => setIsFullscreenPreview(false)}
+        >
+          {/* TOP CONTROLS BAR */}
+          <div className="absolute top-6 left-6 right-6 flex items-center justify-between z-20" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold">
+                {activeImageIdx + 1} / {selectedProject.screenshots.length}
+              </span>
+              <h4 className="text-white font-bold text-sm md:text-base hidden sm:block truncate max-w-md">
+                {selectedProject.screenshots[activeImageIdx].title}
+              </h4>
+            </div>
+
+            <button
+              onClick={() => setIsFullscreenPreview(false)}
+              className="p-2.5 rounded-full bg-white/10 hover:bg-rose-500 text-white transition-all backdrop-blur-md border border-white/20 shadow-xl hover:scale-110"
+              aria-label="Close Preview"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* NAVIGATION BUTTON LEFT */}
+          {selectedProject.screenshots.length > 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrevImage();
+              }}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-[#845EC2] text-white transition-all backdrop-blur-md border border-white/20 shadow-xl z-20 hover:scale-110"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* MAIN ENLARGED IMAGE */}
+          <div 
+            className="relative max-w-6xl max-h-[80vh] w-full flex items-center justify-center p-2 z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedProject.screenshots[activeImageIdx].image}
+              alt={selectedProject.screenshots[activeImageIdx].title}
+              className="max-h-[75vh] max-w-full object-contain rounded-2xl border border-white/20 shadow-2xl animate-scaleUp"
+            />
+          </div>
+
+          {/* NAVIGATION BUTTON RIGHT */}
+          {selectedProject.screenshots.length > 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNextImage();
+              }}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-[#845EC2] text-white transition-all backdrop-blur-md border border-white/20 shadow-xl z-20 hover:scale-110"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* BOTTOM CAPTION BAR */}
+          <div 
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 max-w-lg w-[90%] bg-slate-900/85 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-center z-20 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h5 className="font-bold text-white text-sm md:text-base mb-1">
+              {selectedProject.screenshots[activeImageIdx].title}
+            </h5>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              {selectedProject.screenshots[activeImageIdx].desc}
+            </p>
           </div>
         </div>
       )}
