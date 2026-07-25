@@ -1,5 +1,5 @@
 "use client";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import SplitText from "@/components/SplitText";
@@ -71,6 +71,14 @@ export default function Home() {
               <Link href="/projects" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#845EC2] text-white font-semibold text-sm hover:bg-[#6c43a7] transition-all duration-300 shadow-[0_8px_25px_rgba(132,94,194,0.35)] hover:scale-[1.03]">
                 {t("hero.btn.projects")} <ArrowUpRight className="w-4 h-4" />
               </Link>
+              <a
+                href="/cv.pdf"
+                download="CV_Hillmy_Dyan.pdf"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#0081CF] text-white font-semibold text-sm hover:bg-[#006bb3] transition-all duration-300 shadow-[0_8px_25px_rgba(0,129,207,0.35)] hover:scale-[1.03]"
+              >
+                <Download className="w-4 h-4" />
+                {t("hero.btn.cv")}
+              </a>
               <Link href="/about" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl glass-ultra-pill text-slate-800 dark:text-white font-semibold text-sm hover:border-slate-300 dark:hover:border-white/40 transition-all duration-300 shadow-sm hover:scale-[1.02]">
                 {t("hero.btn.about")}
               </Link>

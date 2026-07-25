@@ -30,13 +30,13 @@ export default function Contact() {
             <div className="space-y-8">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t("contact.info")}</h3>
               <div className="space-y-6">
-                <a href="mailto:hillmydyan@gmail.com" className="flex items-center gap-4 text-slate-600 dark:text-slate-300 hover:text-[#845EC2] dark:hover:text-[#A78BFA] transition-colors group">
+                <a href="mailto:hillmy03@gmail.com" className="flex items-center gap-4 text-slate-600 dark:text-slate-300 hover:text-[#845EC2] dark:hover:text-[#A78BFA] transition-colors group">
                   <div className="w-12 h-12 rounded-2xl glass-ultra-pill flex items-center justify-center group-hover:border-[#845EC2]/50 transition-all group-hover:scale-105">
                     <Mail className="w-5 h-5 text-[#845EC2] dark:text-[#A78BFA]" />
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Email</p>
-                    <p className="font-medium">hillmydyan@gmail.com</p>
+                    <p className="font-medium">hillmy03@gmail.com</p>
                   </div>
                 </a>
                 <a href="https://github.com/hillmydyan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-slate-600 dark:text-slate-300 hover:text-[#845EC2] dark:hover:text-[#A78BFA] transition-colors group">

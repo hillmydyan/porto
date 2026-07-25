@@ -9,39 +9,39 @@ export default function SkillsPage() {
 
   const frontendCards: BentoCardData[] = [
     {
-      title: "React.js & Next.js 14/15",
+      title: "React.js & Next.js",
       label: "Frontend Core",
-      level: "Advanced",
-      description: lang === "id" ? "Pengembangan SSR, SSG, App Router modern, dan SPA performa tinggi." : "Modern SSR, SSG, App Router architecture, and high-performance SPAs.",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Pengembangan komponen UI interaktif, App Router, dan SSR/SPA." : "Building interactive UI components, App Router, and SSR/SPA web apps.",
       icon: Layout,
       featured: true
     },
     {
       title: "TypeScript",
       label: "Type Safety",
-      level: "Advanced",
-      description: lang === "id" ? "Pengembangan type-safe, arsitektur modular, dan maintenance tinggi." : "Type-safe codebases, modular architecture, and high maintainability.",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Penulisan kode type-safe untuk struktur aplikasi yang lebih rapi." : "Type-safe codebases for structured and maintainable applications.",
       icon: Code
     },
     {
-      title: "TailwindCSS & Ultra Glass",
+      title: "TailwindCSS & Glassmorphism",
       label: "Styling",
-      level: "Expert",
-      description: lang === "id" ? "Desain responsif, Ultra-Refractive Glassmorphism, dan custom CSS system." : "Responsive layouts, Ultra-Refractive Glassmorphism, and custom CSS design systems.",
+      level: lang === "id" ? "Profisien" : "Proficient",
+      description: lang === "id" ? "Penerapan tata letak responsif, UI modern, dan custom CSS utility." : "Responsive layouts, modern glass UI, and clean CSS styling.",
       icon: Globe
     },
     {
-      title: "Three.js & WebGL",
-      label: "3D Graphics",
-      level: "Intermediate",
-      description: lang === "id" ? "Animasi 3D interaktif, shader OGL, dan rendering Canvas 60fps." : "Interactive 3D animations, OGL shaders, and 60fps Canvas rendering.",
+      title: "Three.js & Canvas FX",
+      label: "Web Animation",
+      level: lang === "id" ? "Eksploratif" : "Exploratory",
+      description: lang === "id" ? "Eksperimen animasi 3D web interaktif dan rendering visual." : "Interactive 3D visual experiments and web canvas rendering.",
       icon: Cpu
     },
     {
-      title: "Zustand & State Management",
+      title: "State Management (Zustand)",
       label: "State Logic",
-      level: "Advanced",
-      description: lang === "id" ? "Pengelolaan state global dengan Zustand, Redux Toolkit, dan React Context." : "Global state management with Zustand, Redux Toolkit, and React Context.",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Pengelolaan state aplikasi dengan Zustand dan React Context." : "Managing application state using Zustand and React Context.",
       icon: Database
     }
   ];
@@ -50,77 +50,77 @@ export default function SkillsPage() {
     {
       title: "Node.js & Express",
       label: "Backend Core",
-      level: "Advanced",
-      description: lang === "id" ? "RESTful API cepat, middleware kustom, dan microservices." : "High-speed RESTful APIs, custom middleware, and microservices.",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Pembuatan RESTful API sederhana, routing, dan middleware." : "Building clean RESTful APIs, routing, and custom middleware.",
       icon: Server,
       featured: true
     },
     {
       title: "Laravel & PHP",
       label: "MVC Framework",
-      level: "Advanced",
-      description: lang === "id" ? "Aplikasi web MVC full-stack, ORM Eloquent, dan autentikasi." : "Full-stack MVC web apps, Eloquent ORM, and secure authentication.",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Pengembangan aplikasi web MVC dan integrasi ORM Eloquent." : "Developing web apps with MVC structure and Eloquent ORM.",
       icon: Code
     },
     {
       title: "MySQL & PostgreSQL",
       label: "Database",
-      level: "Advanced",
-      description: lang === "id" ? "Perancangan skema relasional, indexing, dan optimasi query." : "Relational schema design, indexing, and query optimization.",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Perancangan skema relasional dan penulisan query dasar." : "Relational schema design and writing clean database queries.",
       icon: Database
+    },
+    {
+      title: "RESTful API Integration",
+      label: "Architecture",
+      level: lang === "id" ? "Profisien" : "Proficient",
+      description: lang === "id" ? "Desain endpoint terstruktur, JSON response, dan autentikasi JWT." : "Structured endpoint design, JSON responses, and JWT auth.",
+      icon: Globe
     },
     {
       title: "Python Scripting",
       label: "Automation",
-      level: "Intermediate",
-      description: lang === "id" ? "Scripting otomatisasi data, backend AI integration, dan scraping." : "Data automation scripting, AI backend integrations, and scraping.",
+      level: lang === "id" ? "Dasar" : "Basic",
+      description: lang === "id" ? "Scripting otomatisasi data sederhana dan integrasi script dasar." : "Basic task automation scripting and data processing.",
       icon: Terminal
-    },
-    {
-      title: "REST API & GraphQL",
-      label: "Architecture",
-      level: "Advanced",
-      description: lang === "id" ? "Desain endpoint aman, autentikasi JWT, dan dokumentasi Swagger." : "Secure endpoint design, JWT auth, and Swagger API docs.",
-      icon: Globe
     }
   ];
 
   const devopsCards: BentoCardData[] = [
     {
-      title: "Docker & Containerization",
-      label: "Infrastructure",
-      level: "Intermediate",
-      description: lang === "id" ? "Isolasi container, Docker Compose, dan deployment terstandar." : "Container isolation, Docker Compose, and standardized deployments.",
-      icon: Server,
+      title: "Git & GitHub Workflow",
+      label: "Version Control",
+      level: lang === "id" ? "Profisien" : "Proficient",
+      description: lang === "id" ? "Manajemen repositori kode dan alur kerja kolaborasi tim." : "Code repository management and collaborative Git workflows.",
+      icon: GitBranch,
       featured: true
     },
     {
-      title: "Git & GitHub Actions",
-      label: "CI / CD",
-      level: "Advanced",
-      description: lang === "id" ? "Version control workflow, CI/CD pipeline, dan kolaborasi repositori." : "Version control workflow, CI/CD pipelines, and repository collaboration.",
-      icon: GitBranch
+      title: "Docker Basics",
+      label: "Infrastructure",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Penggunaan container Docker dasar untuk lingkungan pengembangan." : "Basic Docker containerization for development environment setup.",
+      icon: Server
+    },
+    {
+      title: "Linux & Web Hosting",
+      label: "Cloud Ops",
+      level: lang === "id" ? "Menengah" : "Intermediate",
+      description: lang === "id" ? "Perintah dasar Linux Ubuntu, Nginx reverse proxy, dan VPS/Vercel." : "Ubuntu CLI basics, Nginx reverse proxy, and VPS/Vercel deployments.",
+      icon: Terminal
     },
     {
       title: "MikroTik & Networking",
       label: "Network Admin",
-      level: "Intermediate",
-      description: lang === "id" ? "Routing, VLAN, firewall rules, dan manajemen bandwidth jaringan." : "Routing, VLANs, firewall rules, and network bandwidth control.",
+      level: lang === "id" ? "Dasar - Menengah" : "Basic - Intermediate",
+      description: lang === "id" ? "Konfigurasi dasar routing jaringan, VLAN, dan pengaturan firewall." : "Basic network routing configuration, VLANs, and firewall rules.",
       icon: Shield
     },
     {
-      title: "Cyber Security & Server Labs",
+      title: "Cyber Security Fundamentals",
       label: "Security",
-      level: "Intermediate",
-      description: lang === "id" ? "Analisis vulnerability, web defacement investigation, dan VirtualBox." : "Vulnerability analysis, web defacement investigation, and VirtualBox labs.",
+      level: lang === "id" ? "Dasar" : "Basic",
+      description: lang === "id" ? "Pemahaman dasar keamanan web dan analisis kerentanan sistem." : "Understanding web security principles and vulnerability awareness.",
       icon: Shield
-    },
-    {
-      title: "Linux & Cloud Deployment",
-      label: "Cloud Ops",
-      level: "Intermediate",
-      description: lang === "id" ? "Ubuntu server, Nginx reverse proxy, dan deployment Vercel/VPS." : "Ubuntu server admin, Nginx reverse proxy, and Vercel/VPS deployments.",
-      icon: Terminal
     }
   ];
 
@@ -158,7 +158,9 @@ export default function SkillsPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t("skills.frontend")}</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Responsive & high-performance UI engineering</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    {lang === "id" ? "Pengembangan tampilan web yang responsif & interaktif" : "Responsive & interactive web user interfaces"}
+                  </p>
                 </div>
               </div>
 
@@ -187,7 +189,9 @@ export default function SkillsPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t("skills.backend")}</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Scalable APIs, database schemas & server architecture</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    {lang === "id" ? "Pengembangan API terstruktur & manajemen database" : "Structured API development & database management"}
+                  </p>
                 </div>
               </div>
 
@@ -216,7 +220,9 @@ export default function SkillsPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t("skills.devops")}</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Docker, CI/CD, networking & security analysis</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    {lang === "id" ? "Pengelolaan repositori, container dasar & infrastruktur" : "Repository management, basic containers & infrastructure"}
+                  </p>
                 </div>
               </div>
 

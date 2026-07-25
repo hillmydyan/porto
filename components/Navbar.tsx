@@ -1,5 +1,5 @@
 "use client";
-import { Atom, Menu, X } from "lucide-react";
+import { Atom, Download, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useLang } from "@/contexts/LangContext";
@@ -45,6 +45,14 @@ export function Navbar() {
               <Link href="/projects" className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                 {t("nav.projects")}
               </Link>
+              <a
+                href="/cv.pdf"
+                download="CV_Hillmy_Dyan.pdf"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#845EC2] dark:text-[#A78BFA] hover:text-white hover:bg-[#845EC2] dark:hover:bg-[#845EC2] dark:hover:text-white border border-[#845EC2]/40 px-3.5 py-1.5 rounded-lg transition-all"
+              >
+                <Download className="w-3.5 h-3.5" />
+                CV
+              </a>
               <Link href="/contact" className="ml-1 text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900 px-4 py-2 rounded-lg hover:bg-[#845EC2] dark:hover:bg-[#845EC2] dark:hover:text-white transition-all shadow-sm">
                 {t("nav.contact")}
               </Link>
@@ -82,7 +90,16 @@ export function Navbar() {
             <Link href="/projects" onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
               {t("nav.projects")}
             </Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900 px-3 py-2.5 rounded-lg hover:bg-[#845EC2] dark:hover:bg-[#845EC2] dark:hover:text-white transition-all shadow-sm text-center mt-1">
+            <a
+              href="/cv.pdf"
+              download="CV_Hillmy_Dyan.pdf"
+              onClick={() => setIsOpen(false)}
+              className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#845EC2] dark:text-[#A78BFA] border border-[#845EC2]/40 px-3 py-2.5 rounded-lg hover:bg-[#845EC2] hover:text-white transition-all text-center mt-1"
+            >
+              <Download className="w-4 h-4" />
+              {t("hero.btn.cv")}
+            </a>
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900 px-3 py-2.5 rounded-lg hover:bg-[#845EC2] dark:hover:bg-[#845EC2] dark:hover:text-white transition-all shadow-sm text-center">
               {t("nav.contact")}
             </Link>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import { Download } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useLang } from "@/contexts/LangContext";
 
@@ -31,6 +32,17 @@ export default function About() {
                 <p className="text-slate-900 dark:text-white font-semibold text-lg md:text-xl">{t("about.p1")}</p>
                 <p className="text-slate-600 dark:text-slate-300">{t("about.p2")}</p>
                 <p className="text-slate-500 dark:text-slate-400">{t("about.p3")}</p>
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href="/cv.pdf"
+                  download="CV_Hillmy_Dyan.pdf"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#845EC2] text-white font-semibold text-sm hover:bg-[#6c43a7] transition-all duration-300 shadow-[0_8px_25px_rgba(132,94,194,0.35)] hover:scale-[1.02]"
+                >
+                  <Download className="w-4 h-4" />
+                  {t("hero.btn.cv")}
+                </a>
               </div>
               <div className="mt-10 pt-10 border-t border-slate-200/80 dark:border-white/10">
                 <div className="flex items-center gap-2 mb-5">
